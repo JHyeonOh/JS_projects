@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+        
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <title>Global Shopping Mall Flipkart</title>
+
+    <body>
+        
+        <!-- 모달창 -->
+        <div class="black-background" id="modal">
+            <div class="white-background">
+                <h4 id="title">로그인하세요</h4>
+                <form onsubmit="return valCheck()" action="/login.php">
+                    <div class="form-group mt-4">
+                        <input type="email" class="form-control" placeholder="Enter email" id="email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password" id="password">
+                    </div>
+                    <div class="form-group form-check">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-danger" id="close">Close</button>
+                </form>
+            
+            </div>
+        </div>
+        
+            
+        <!-- 네비게이션 구현 -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Dress Shop</a>
+            <!-- 버튼 -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Product</a>
+                 
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+					   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Show Now</a>
+				    </li>
+                </ul>
+                <!-- 검색창 -->
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        
+        </nav>
+        
+        <!-- jumbotron 메인 대문 -->
+        <div class="jumbotron main-background">
+            <h1 class="display-4">20% Season off</h1>
+                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <hr class="my-4">
+                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button" onclick="openModal('로그인하세요')">Log in</a>
+            <a class="btn btn-primary btn-lg" href="#" role="button" onclick="openModal('가입하세요')">Join us</a>
+        </div>
+        
+        <!-- 상품진열, grid -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="img/pic1.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">
+                               Some quick example text to build on the card title and make up the bulk of the card's content. 
+                            </p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-4">
+                    <div class="card">
+                        <img src="img/pic2.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">
+                               Some quick example text to build on the card title and make up the bulk of the card's content. 
+                            </p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="img/pic3.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">
+                               Some quick example text to build on the card title and make up the bulk of the card's content. 
+                            </p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    <!-- 스크립트 시작-->  
+    <script>
+        //모달창 열기
+        function openModal(a){
+            document.getElementById('modal').style.display = 'block';
+            document.getElementById('title').innerHTML = a;
+        }
+        
+        //모달창 닫기
+        document.getElementById('close').addEventListener('click', function(){
+            document.getElementById('modal').style.display = 'none';
+        });
+        
+//  1. 이메일과 password input에 입력된 값이 빈칸인 경우,
+//    - 폼 전송 막기, 안내문 띄우기
+//  2. 빈칸이 아닌경우,
+//    - 폼 전송 시키기.
+        function valCheck(){
+            if(document.getElementById('email').value == "" ){
+                alert('이메일을 입력하세요');
+                return false
+            } else if(document.getElementById('password').value == ""){
+                alert('비밀번호를 입력하세요');
+                 return false
+            } else {
+                return true
+            }
+        }
+        
+        //상품들
+        var products = [{
+				id: 1,
+				price: 299,
+				img: 'img/pic1.jpg',
+				title: 'Blossom Dress',
+				text: "Do you like some random yellow stuff? Here's one for you."
+			},
+			{
+				id: 2,
+				price: 199,
+				img: 'img/pic1.jpg',
+				title: 'Springfield Shirt',
+				text: "Stole it from my dad."
+			},
+			{
+				id: 3,
+				price: 399,
+				img: 'img/pic3.jpg',
+				title: 'Black Monastery',
+				text: "The best beer comes from the monastery."
+			}
+		];
+/*//가장 가격이 낮은 상품을 왼쪽으로
+        products.sort(function(a,b){
+            return a.price - b.price
+        });*/
+        
+//상품 제목 바꾸기
+        //1번 상품
+        document.getElementsByClassName('card-title')[0].innerHTML =                 
+            products[0].title;
+        document.getElementsByClassName('card-text')[0].innerHTML =                
+            products[0].text;
+        //2번 상품
+        document.getElementsByClassName('card-title')[1].innerHTML = 
+            products[1].title;
+         document.getElementsByClassName('card-text')[1].innerHTML = 
+            products[1].text;
+        //3번 상품
+        document.getElementsByClassName('card-title')[2].innerHTML = 
+            products[2].title;
+         document.getElementsByClassName('card-text')[2].innerHTML = 
+            products[2].text;
+        
+    </script>    
+    
+    <!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   
+        
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
+    </body>
+    
+</html>

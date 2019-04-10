@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+    <head>
+    
+    </head>
+<style>
+    #box.hover{
+        background: skyblue;
+        color: white;
+    }    
+</style>
+<body>
+    <h3>연습문제1</h3>
+    <script>
+        var lunchCost = 6500;
+        function ccPay(){
+            if (lunchCost < 4000){
+               
+                return '승인'
+            }else{
+                return '거절'
+            }
+        }
+        console.log(ccPay());
+            
+    </script>
+    <h3>연습문제2</h3>
+    <script>
+        function 더하기(a){
+            return 2+a;
+        }
+    </script>
+    <h3>연습문제3</h3>
+    <script>
+       if(3==1){
+           console.log('맞음');
+       } else {
+           console.log('틀림');
+       }
+    </script>
+<!------------------------ 자바스크립트 프로젝트 북  ------------------------>
+    
+<!-- addEventListener , 여러 이벤트를 정의할 수 있음. -->
+    <button id="btn">Click!</button>
+    <script>
+       /* btn.onclick = function(){
+            alert('evnet 1');
+        }
+        btn.onclick = function(){ // 여기만 적용됨. 이벤트가 추가된게 아니라 변경된 것임.
+            alert('event 2');
+        }*/
+        
+        //위를 수정하면
+        
+        var btn = document.getElementById('btn');
+        btn.addEventListener('click', function(){
+           alert('evnet 1'); 
+        });
+        btn.addEventListener('click', function(){
+           alert('event 2'); 
+        });
+    </script>
+    
+<!-- hover 클래스 추가/제거 -->
+    <div id="box">
+        <p>마우스를 올려주세요</p>
+    </div>
+    <script>
+        var box = document.getElementById('box');
+        //마우서 오버
+        box.addEventListener('mouseover', function(){
+            box.setAttribute('class', 'hover');
+        });
+        //마우스 아웃
+        box.addEventListener('mouseout', function(){
+            box.removeAttribute('class');
+        });
+    </script>
+    
+<!-- submit 이벤트와 기본 동작 방지 -->
+    <form id = "frm">
+        <fieldset>
+            <legend>주소록</legend>
+            <textarea name="txt" id="txt" cols="30" rows="10"></textarea><br>
+            <input type="submit" id="q" value="불러오기">
+        </fieldset>
+    </form>
+    <script>
+        var address = ["오재현", "email: oh2390@hanmail.net"];
+        //폼 객체 지정
+        var q = document.getElementById('frm');
+        function addr_search(event){
+            var textarea = q.txt; 
+        //textarea 주소록 표시
+            textarea.value = '이름 / 주소 \n';
+            textarea.value += address[0] + ', ' + address[1] + '\n';  
+        }
+        //폼 제출 시
+        q.addEventListener('submit', function(event){
+            event.preventDefault(); // 기본 이벤트 해제
+            addr_search();
+        });
+    </script>
+    
+<!-- object, array -->
+    <h4 id="title1">car barand</h4>
+    <p>car price</p>
+    <script>
+        var car1 = ['BMW', 520, 30000]; //[] , array
+        car1[1]; //array 꺼낼 때
+        
+        var car2 = {
+            brand: 'BMW',
+            model: 520,
+            price: 30000
+        }
+        car2.brand;//object 꺼낼 때
+
+</script>
+    
+<script>
+var Object1 = {a : 1};
+var Object2 = Object1;
+Object2.b = 2;
+console.log("Object2 : " + Object1.b);
+</script>
+    
+<script>
+        
+//3주차 1903031
+    var 문자 = ['나', '가', '다'];
+        문자.sort();
+	//클래스 추가&제거하는 문법
+//	document.getElementById().classList.add('active');	
+//	document.getElementById().classList.remove('active');	        
+    </script>
+    
+<!--    19.03.31 - map , filter, sort 복습하기
+
+ map : 콜백함수의 리턴을 모아 새로운 배열을 만드는게 목적..
+ 기존 배열에서 값의 곱하기 2를 한 배열을 생성하기.  -->
+<script type="text/javascript">
+//map 예제 1
+(function test(){
+   var testArray = [1,2,3,4,5];
+   var returnArray = testArray.map(function(currentValue, index, array){
+       console.log(currentValue);
+       console.log(index);
+       console.log(array);
+       return currentValue * 2; // 기존배열 값 * 2
+   });
+   console.log(returnArray);
+})();
+//map 예제 2
+var arr = ['foo', 'hello', 'diamond', 'A'];
+var arr2 = arr.map(function(str){
+    return str.length;
+});
+console.log("map 결과 : " + arr2 );
+    
+// map 함수로 filter함수와 같이 오브젝트도 컨트롤 할 수 있음
+
+</script>
+<!-- forEach로 구현하면 상위 스코프 변수를 수정하면서 사이드 이펙트를 가지게 됨 -->
+<script>
+var arr = ['foo', 'hello', 'diamond', 'A'];
+var arr2 = [];
+    arr.forEach(function(str){
+        arr2.push(str.length);
+    });
+    console.log("forEach : " + arr2);
+</script>
+
+<!-- filter는 말그대로 요소들을 걸러내는 목적 -->
+<script>
+// 정수 배열에서 5의 배수인 정수만 모으기
+var arr = [4, 15, 377, 395, 400, 1024, 3000];
+var arr2 = arr.filter(function(n){
+    return n % 5 == 0;
+});
+console.log("filter 결과 : " + arr2);
+
+</script>
+    
+<!--  19.03.31 - event버블링 복습하기   -->
+<button>add one item</button>
+<script>
+var button = document.querySelector('button');
+    button.addEventListener('click',  addItem);
+    function addItem(event){
+        console.log(event);
+    }
+
+
+</script>
+    
+<!--event 버블링, 브라우저가 event를 감지하는 방식 2가지-->
+<div class="one"> 1
+    <div class="two"> 2
+        <div class="three"> 3
+        </div>
+    </div>
+</div>
+<script>
+var divs = document.querySelectorAll('div');
+divs.forEach(function(div){
+    div.addEventListener('click', logEvent);
+});
+function logEvent(evnet){
+    console.log(event.currentTarget.className); 
+}
+// 콘솔 확인 결과 : 브라우저는 특정 화면 요소에서 이벤트가 발생하면, 최상위에 있는 화면 요소까지 이벤트를 전파 시킴.
+</script>
+
+   
+            
+<!------------------------------------------ jQuery library ------------------------------------------>
+    
+    <p class="hello ">안녕1</p>
+    <p class="hello ">안녕2</p>
+    <p class="hello ">안녕3</p>
+
+     <script
+            src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+        
+        <h4 id="hello">안녕하세요</h4>
+        <button id="button">버튼</button>
+        <script>
+            
+            
+/*          document.getElementById('hello').innerHTML = '바보';
+            
+            //쿼리 셀렉터
+            $('#hello').text('바보');
+*/
+    
+            $('#button').click(function(){
+                $('#hello').val();
+                $('#hello').text('하이~');
+                 $('#hello').animate({ 
+                    marginLeft : '150px'
+                }); 
+            })
+            
+       
+            // object -> JSON
+            var 데이터 = { data : '안녕'};
+
+            // object를 json 스트링 변환
+            데이터 = JSON.stringify(데이터);
+
+            localStorage.setItem('name', 데이터);
+            // JSON -> object
+            JSON.parse();
+            var 데이터 = JSON.parse();
+            데이터.data;
+            
+            var 데이터 = {
+                quantity : 1,
+                color : 'Blue',
+                size : 'small',
+                price :199
+            }
+    
+        </script>
+        
+    
+    
+</body>
+    
+</html>

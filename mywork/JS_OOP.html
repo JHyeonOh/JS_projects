@@ -1,0 +1,56 @@
+<html>
+
+<head>
+</head>
+<body>
+<script>
+    
+    // lol 챔피언 바텀 조합 , OOP 
+    var jhin = {
+        q: 'Dancing Grenade',
+        w: 'Deadly Flourish',
+        e: 'Captive Audience',
+        
+        sayHi : function() {
+            console.log('Hello');
+        } 
+    }
+    
+     var blitzcrank = {
+        q: 'Rocket Grab',
+        w: 'Overdrive',
+        e: 'Power Fist',
+        
+        sayHi : function() {
+            console.log('Hello');
+        } 
+    }
+    //챔피언이 약 140개인데 object 를 언제 다 만들지..?
+    //그래서 Class가 가지고 있는 반복적으로 찍어낼 수 있는 기계(생성자)를 만들자
+    function champions(q, w, e) {
+        this.q = q;
+        this.w = w;
+        this.e = e;
+        
+        this.sayHi = function(){
+            console.log('Hello');
+        }
+    }
+    var jhin = new champions('Dancing Grenade', 'Deadly Flourish', 'Captive Audience');
+    var blitzcrank = new champions('Rocket Grab', 'Overdrive', 'Power Fist');
+    
+    /*function을 써서 class를 만들면 hero.prototype 속성도 몰래 생김
+    프로토타입은 유전자 개념. '상속' 기능 구현을 위해 만들어낸 장치*/
+    
+    //가정1 업데이트 되어 'passive' 스킬을 추가해야되는 상황. 어떻게??
+    champions.prototype.passive = '공패시브';
+    jhin.r //부모 유전자를 탐색
+    blitzcrank.r //부모 유전자를 탐색
+    
+    
+    
+    
+</script>
+</body>
+
+</html>

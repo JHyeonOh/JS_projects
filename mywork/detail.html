@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="main.css">
+        <title>Detail Page</title>
+    </head>
+    
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">DressShop</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+        </button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Services</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Products
+        </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Something else here</a>
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Show Now</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+    
+    <h4 class="text-center my-4">Detail</h4>
+    <div class="container">
+        <div class="row">
+  
+            <div class="col-md-6">
+                <img src="img/pic1.jpg" width="100%">
+            </div>
+            <div class="col-md-6">
+                <h4 class="my-4">Blossom Dress</h4>
+            <p>
+Crepe kurta adds a star to your wardrobe and to your look when paired with solid color leggings your pants.</p>
+            <p>price : $199</p>
+            <form>
+                <div class="form-row">
+                    <div class="col">
+                        <input type="text" class="form-control" value="1" id="number">
+                    </div>
+                    <div class="col">
+                        <select class="form-control" id="color">
+                            <option>White</option>
+                            <option>Red</option>
+                            <option>Green</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select class="form-control" id="size">
+                            <option>Large</option>
+				            <option>Medium</option>
+							<option>Small</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger my-4" id="add">장바구니추가</button>
+            </form>
+        </div>
+    </div>
+</div>
+    
+    
+	<style>
+		.list {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			border-bottom: 1px solid #ccc;
+		}
+		
+		.tab-button {
+			display: block;
+			padding: 10px 20px 10px 20px;
+			float: left;
+			margin-right: -1px;
+			margin-bottom: -1px;
+			color: grey;
+			text-decoration: none;
+		}
+		
+		.active {
+			border-top: 2px solid orange;
+			border-right: 1px solid #ccc;
+			border-bottom: 1px solid white;
+			border-left: 1px solid #ccc;
+			color: black;
+			margin-top: -2px;
+		}
+		
+		.tab-content {
+			display: none;
+			padding: 10px;
+		}
+		
+		.show {
+			display: block;
+		}
+	</style>
+    
+    <br>
+   <!--active라는 클래스는 버튼 하이라이트해주는 클래스, show는 탭 내용 보여주는 클래스-->
+	<div class="container mt-5" style="margin-bottom: 500px;">
+		<ul class="list">
+            <!--  -->
+			<li><a class="tab-button" data-id="0">Products</a></li>
+			<li><a class="tab-button active" data-id="1">Information</a></li>
+			<li><a class="tab-button" data-id="2">Shipping</a></li>
+			<div style="clear:both;"></div>
+		</ul>
+
+		<div class="tab-content">
+			<p>상품설명입니다. Product</p>
+		</div>
+		<div class="tab-content show">
+			<p>상품정보입니다. Information</p>
+		</div>
+		<div class="tab-content">
+			<p>배송정보입니다. Shipping</p>
+		</div>
+
+	</div>
+    
+   <script type="text/javascript" src="main.js"></script>
+    
+
+    <!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+    
+    <!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+     <script
+            src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    
+    <script>
+        //1. 장바구니 추가 버튼을 누르면,
+        $('#add').on('click', function(){
+            //2. 사용자가 입력한 수량, 칼라, 사이즈값을 가져와서
+            //3. 이쁘게 오브젝트 데이터를 만든 다음
+            var 데이터 = {
+                quantity : $('#number').val(),
+                color : document.getElementById('color').value, 
+                size : $('#size').val(),
+                price : 199
+            }
+        //데이터.color = document.getElementById(칼라선택폼).value
+
+            //4. localstorage에 저장 (근데 오브젝트니까..JSON화 해서 저장해야겠군..)            
+            var 새데이터 = JSON.stringify(데이터);
+            localStorage.setItem('product1', 새데이터);
+          })
+        
+    </script>
+    
+          
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
