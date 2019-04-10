@@ -185,13 +185,11 @@ console.log("filter 결과 : " + arr2);
 <!--  19.03.31 - event버블링 복습하기   -->
 <button>add one item</button>
 <script>
-var button = document.querySelector('button');
-    button.addEventListener('click',  addItem);
-    function addItem(event){
-        console.log(event);
-    }
-
-
+    var button = document.querySelector('button');
+        button.addEventListener('click',  addItem);
+        function addItem(event){
+            console.log(event);
+        }
 </script>
     
 <!--event 버블링, 브라우저가 event를 감지하는 방식 2가지-->
@@ -202,18 +200,23 @@ var button = document.querySelector('button');
     </div>
 </div>
 <script>
-var divs = document.querySelectorAll('div');
-divs.forEach(function(div){
-    div.addEventListener('click', logEvent);
-});
-function logEvent(evnet){
-    console.log(event.currentTarget.className); 
-}
+var divs = document.querySelectorAll('div');//NodeList에 담김
+    divs.forEach(function(div){
+        div.addEventListener('click', logEvent);
+    });
+    function logEvent(evnet){
+        console.log(event.currentTarget.className); 
+    }
 // 콘솔 확인 결과 : 브라우저는 특정 화면 요소에서 이벤트가 발생하면, 최상위에 있는 화면 요소까지 이벤트를 전파 시킴.
 </script>
 
-   
-            
+<!-- part2.pdf P58 --><br>
+<script>
+    //enter를 못넣음. 시간절약 위해 append()는 jQuery를 씀.
+    var tableRow =
+        '<tr><th scope="row">1번</th><td>1개</td><td>3000원</td><td>small size</td> </tr>';
+    //ex) $('tbody').append(tableRow) 이런식~, append()는 하위요소에 내용을 추가
+</script>    
 <!------------------------------------------ jQuery library ------------------------------------------>
     
     <p class="hello ">안녕1</p>
