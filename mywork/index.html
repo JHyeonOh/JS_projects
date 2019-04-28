@@ -4,11 +4,13 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
+
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
-        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
         <link rel="stylesheet" href="main.css">
+
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"  type="text/javascript"></script>
     </head>
     <title>Global Shopping Mall Flipkart</title>
 
@@ -119,7 +121,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">
-                               Some quick example text to build on the card title and make up the bulk of the card's content. 
+                               Some quick example text to build on the card titlfe and make up the bulk of the card's content. 
                             </p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
@@ -128,10 +130,32 @@
             </div>
         </div>
         
+    <!-- 더보기 버튼--> 
+        <div class="container">
+            <button class="btn btn-danger" id="more">상품 더보기</button>
+        </div>
+        
         
         
     <!-- 스크립트 시작-->  
+        
     <script>
+        
+        //scroll기능 구현
+        // 1. 스크롤을 100px정도 내리면, 로고 폰트사이즈가 작아짐
+          // 2. 스크롤 올리면 로고 폰트가 원래 크기로~
+        $(window).scroll(function(){
+            var height = $(window).scrollTop();
+            
+            if(height > 100){
+                $('.navbar-brand').addClass('small-font');
+            } else if(height <= 100){
+                 $('.navbar-brand').removeClass('small-font');
+            }
+            
+        });
+        
+        
         //모달창 열기
         function openModal(a){
             document.getElementById('modal').style.display = 'block';
@@ -204,13 +228,71 @@
          document.getElementsByClassName('card-text')[2].innerHTML = 
             products[2].text;
         
+//더보기 버튼 (ajax 이용)
+        //		1. 더보기 버튼을 누르면, 
+		//		2. more.json이라는 경로로 GET요청을 해서 데이터가져옴 
+		//		3. HTML템플릿을 만들어서 
+		//		4. 원하는 위치에 append() 해줌
+    
+    $('#more').click(function() {
+
+			$.ajax({
+				type: 'GET',
+				url: '/more.json',
+				dataType: 'json',
+                async : 'false',
+
+			}).done(function(데이터) {
+				console.log(데이터[0])
+
+				for (var i=0; i<1; i++) {
+					var 템플릿 = `<div class="col-md-4">
+						<div class="card">
+							<img src="img/pic4.jpeg" class="card-img-top">
+							<div class="card-body">
+								<h5 class="card-title">${데이터[0].title}</h5>
+								<p class="card-text">${데이터[0].text}</p>
+								<a href="#" class="btn btn-primary">Go somewhere</a>
+							</div>
+						</div>
+					</div>`
+                    var 템플릿2 = `<div class="col-md-4">
+						<div class="card">
+							<img src="img/pic5.jpeg" class="card-img-top">
+							<div class="card-body">
+								<h5 class="card-title">${데이터[1].title}</h5>
+								<p class="card-text">${데이터[1].text}</p>
+								<a href="#" class="btn btn-primary">Go somewhere</a>
+							</div>
+						</div>
+					</div>`;
+                    var 템플릿3 = `<div class="col-md-4">
+						<div class="card">
+							<img src="img/pic6.jpeg" class="card-img-top">
+							<div class="card-body">
+								<h5 class="card-title">${데이터[1].title}</h5>
+								<p class="card-text">${데이터[1].text}</p>
+								<a href="#" class="btn btn-primary">Go somewhere</a>
+							</div>
+						</div>
+					</div>`
+                }
+					$('div.row').append(템플릿);
+                    $('div.row').append(템플릿2);
+                    $('div.row').append(템플릿3);
+				
+
+			});
+
+		});
+
+    
+        
     </script>    
     
-    <!-- Optional JavaScript -->
+  <!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-   
-        
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         
